@@ -137,3 +137,12 @@ En la práctica es ampliamente utilizado para servicios web y en entornos donde 
 Los `headers` en un request permiten enviar información adicional al servidor sobre cómo debe interpretarse la solicitud. Se pueden entender como los metadatos que acompañan al mensaje principal de esa comunicación.
 
 El `header Content-Type` indica el formato de los datos enviados en el body del request, por ejemplo *JSON* o *XML*. Esto permite que el servidor procese correctamente la información recibida y aplique la lógica adecuada de acuerdo al formato.
+
+## Ejercicio 3
+
+### ¿Qué diferencias se observan entre las llamadas el punto 1 y 3?
+En primer lugar, las llamadas consisten en realizar una solicitud GET al recurso contacts.json, donde el servidor devuelve un JSON con un listado de contactos existentes hasta el momento de la consulta.
+
+Al realizar el `POST`, se añade al recurso un nuevo contacto con mis datos incluidos en el body. A su vez, el servidor responde con lo que parece ser un identificador para dicho contacto.
+
+La diferencia es que al realizar nuevamente la solicitud `GET` en el punto 3, el servidor devuelve el listado de contactos actualizado, incluyendo el nuevo contacto agregado por mi solicitud POST.
