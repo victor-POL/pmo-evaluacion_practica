@@ -505,3 +505,15 @@ Es una metodología ágil de trabajo que se destaca por el uso de tableros visua
 Un ERP (Enterprise Resource Planning) es un sistema que integra y gestiona los procesos internos de una organización, generalmente los más conocidos como finanzas, compras, inventario, logística, RRHH, etc. Su objetivo sería centralizar toda esa información en un único sitio.
 #### N. ¿Salesforce es un ERP?
 No, ya que en un principio está enfocado a la gestión de clientes, ventas, marketing y servicio, pero, como vimos, permite una gran personalización y crear nuevas funcionalidades para diferentes casos de uso.
+
+## Ejercicio 7
+_El codigo del ejercicio se encuentra en la carpeta `ejercicio_6`_
+Archivos:
+- ContactEmailQueueable.apxc
+- ContactTrigger
+- ProContactoCallouts
+
+[!WARNING]
+Se utilizo el playground `My Trailhead Playground 1`.
+El otro playground `Data modeling - Playground` lo cree recién para el modulo de `Modelado de datos`.
+
