@@ -1,0 +1,25 @@
+public class ProContactoService {
+    public static String handleResponseGetCalloutContactById(HttpResponse response) {
+        if (response.getStatusCode() == 200) {
+            String body = response.getBody();
+            
+            // No encontro un registro para el id que me pasaron
+            if (String.isBlank(body) || body == 'null') {
+        		return null;
+    		}
+            
+            Map<String, Object> data = (Map<String, Object>) JSON.deserializeUntyped(body);
+            
+            String email = (String)data.get('email');
+            
+            return email;
+        }
+        return null;
+    }
+    
+	public static String getEmailByProcontactoId(String procontactoId) {
+        HttpResponse response = ProContactoCallouts.makeGetCalloutContactById(procontactoId);
+
+        return handleResponseGetCalloutContactById(response);
+    }
+}

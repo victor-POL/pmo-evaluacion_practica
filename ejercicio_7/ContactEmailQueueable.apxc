@@ -13,7 +13,7 @@ public class ContactEmailQueueable implements Queueable, Database.AllowsCallouts
         for (Contact c : contacts) {
             if (String.isBlank(c.idprocontacto__c)) continue;
 
-            String email = ProContactoCallouts.getEmailByProcontactoId(c.idprocontacto__c);
+            String email = ProContactoService.getEmailByProcontactoId(c.idprocontacto__c);
             
             // Si no se encontro email para el id dado limpiar el campo
             if(String.isBlank(email)) {
