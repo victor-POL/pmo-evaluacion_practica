@@ -189,7 +189,9 @@ Al realizar el `POST`, se añade al recurso un nuevo contacto con mis datos incl
 La diferencia es que al realizar nuevamente la solicitud `GET` en el punto 3, el servidor devuelve el listado de contactos actualizado, incluyendo el nuevo contacto agregado por mi solicitud POST.
 
 ## Ejercicio 4
-[Click para accdeder al Perfil Trailhead](https://www.salesforce.com/trailblazer/u5sz9xs3a2g7w2qjb9)
+[Click para acceder al Perfil Trailhead](https://www.salesforce.com/trailblazer/u5sz9xs3a2g7w2qjb9)
+o
+[https://www.salesforce.com/trailblazer/u5sz9xs3a2g7w2qjb9](https://www.salesforce.com/trailblazer/u5sz9xs3a2g7w2qjb9)
 
 ## Ejercicio 5
 > [!WARNING]
