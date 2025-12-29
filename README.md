@@ -1,4 +1,45 @@
 # Evaluación Práctica – PMO
+El siguiente contenido hace referencia a evaluación práctica para el rol de PMO.
+Postulante: Povoli Olivera, Victor
+
+## Índice
+
+- [Ejercicio 2](#ejercicio-2)
+  - [1. ¿Qué es un servidor HTTP?](#1-qué-es-un-servidor-http)
+  - [2. ¿Qué son los verbos HTTP?](#2-qué-son-los-verbos-http-mencionar-los-más-conocidos)
+  - [3. Request, Response y Headers](#3-qué-es-un-request-y-un-response-en-una-comunicación-http-qué-son-los-headers)
+  - [4. QueryString](#4-qué-es-un-querystring-en-el-contexto-de-una-url)
+  - [5. Response Code](#5-qué-es-el-responsecode-qué-significado-tiene-los-posibles-valores-devueltos)
+  - [6. GET vs POST](#6-cómo-se-envía-la-data-en-un-get-y-cómo-en-un-post)
+  - [7. Verbo HTTP del navegador](#7-qué-verbo-http-utiliza-el-navegador-cuando-accedemos-a-una-página)
+  - [8. JSON y XML](#8-explicar-brevemente-qué-son-las-estructuras-de-datos-json-y-xml-dando-ejemplo-de-estructuras-posibles)
+  - [9. SOAP](#9-explicar-brevemente-el-estándar-soap)
+  - [10. REST Full](#10explicar-brevemente-el-estándar-rest-full)
+  - [11. Headers y Content-Type](#11-qué-son-los-headers-en-un-request-para-qué-se-utiliza-el-key-content-type-en-un-header)
+
+- [Ejercicio 3](#ejercicio-3)
+
+- [Ejercicio 4](#ejercicio-4)
+
+- [Ejercicio 5](#ejercicio-5)
+  - [Lead](#lead)
+  - [Account](#account)
+  - [Contact](#contact)
+  - [Opportunity](#opportunity)
+  - [Product](#product)
+  - [PriceBook](#pricebook)
+  - [Quote](#quote)
+  - [Asset](#asset)
+  - [Case](#case)
+  - [Article](#article)
+
+- [Ejercicio 6](#ejercicio-6)
+  - [Soluciones de Salesforce](#soluciones-de-salesforce)
+  - [Funcionalidades de Salesforce](#funcionalidades-de-salesforce)
+  - [Conceptos generales](#conceptos-generales)
+
+- [Ejercicio 7](#ejercicio-7)
+
 
 ## Ejercicio 2
 
@@ -154,8 +195,10 @@ La diferencia es que al realizar nuevamente la solicitud `GET` en el punto 3, el
 > [!WARNING]
 > ALGUNOS OBJETOS NO ESTABAN EN MI ENTORNO POR LO TANTO NO AGREGUES LOS CAMPOS
 
+### Diagrama relaciones
 ![Diagrama](https://github.com/victor-POL/pmo-evaluacion_practica/blob/main/ejercicio_5/diagrama.jpg?raw=true)
 
+### Objetos
 1. `Lead`
 Representa un potencial cliente que aún no fue calificado. Es el primer registro que se crea cuando una persona o empresa muestra interés, pero todavía no se confirmó si existe una oportunidad real de negocio.
     - Address
