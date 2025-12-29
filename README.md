@@ -151,8 +151,8 @@ La diferencia es que al realizar nuevamente la solicitud `GET` en el punto 3, el
 [Click para accdeder al Perfil Trailhead](https://www.salesforce.com/trailblazer/u5sz9xs3a2g7w2qjb9)
 
 ## Ejercicio 5
-[!WARNING]
-ALGUNOS OBJETOS NO ESTABAN EN MI ENTORNO POR LO TANTO NO AGREGUES LOS CAMPOS
+> [!WARNING]
+> ALGUNOS OBJETOS NO ESTABAN EN MI ENTORNO POR LO TANTO NO AGREGUES LOS CAMPOS
 
 ![Diagrama](https://github.com/victor-POL/pmo-evaluacion_practica/blob/main/ejercicio_5/diagrama.jpg?raw=true)
 
@@ -513,7 +513,7 @@ Archivos:
 - ContactTrigger
 - ProContactoCallouts
 
-[!WARNING]
-Se utilizo el playground `My Trailhead Playground 1`.
-El otro playground `Data modeling - Playground` lo cree recién para el modulo de `Modelado de datos`.
+> [!WARNING]
+> Se utilizo el playground `My Trailhead Playground 1`.
+> El otro playground `Data modeling - Playground` lo cree recién para el modulo de `Modelado de datos`.
 
