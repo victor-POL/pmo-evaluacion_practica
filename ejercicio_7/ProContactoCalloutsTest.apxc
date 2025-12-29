@@ -1,0 +1,94 @@
+@isTest
+private class ProContactoCalloutsTest {
+    private static final String procontactoIdVictor = '-OhRZThX9nqNZZtWuUKh';
+    private static final String procontactoEmailVictor = 'victor.olivera@procontacto.com.mx';
+    
+    @isTest static  void testGetCalloutProContacto() {  
+        StaticResourceCalloutMock mock = new StaticResourceCalloutMock();
+        mock.setStaticResource('GetContactResource');
+        mock.setStatusCode(200);
+        mock.setHeader('Content-Type', 'application/json;charset=UTF-8');
+
+        Test.setMock(HttpCalloutMock.class, mock);
+        
+        Test.startTest();
+        HttpResponse result = ProContactoCallouts.makeGetCalloutContactById(procontactoIdVictor);
+        Test.stopTest();
+
+        Assert.areNotEqual(null,result, 'El callout retorno null en la response.');
+
+        Assert.areEqual(200,result.getStatusCode(), 'El status code no es 200.');
+
+        Assert.areEqual('application/json;charset=UTF-8',
+          result.getHeader('Content-Type'),
+          'El content type value no es el esperado.');
+
+        Map<String, Object> contactInfo =
+            (Map<String, Object>) JSON.deserializeUntyped(result.getBody());
+
+        Assert.areNotEqual(null, contactInfo);
+
+        String email = (String) contactInfo.get('email');
+        Assert.areEqual(procontactoEmailVictor, email);
+    }
+    
+    @IsTest
+	static void testGetEmailByProcontactoId_returnsEmail() {
+    	StaticResourceCalloutMock mock = new StaticResourceCalloutMock();
+    	mock.setStaticResource('GetContactResource');
+    	mock.setStatusCode(200);
+    	mock.setHeader('Content-Type', 'application/json;charset=UTF-8');
+
+    	Test.setMock(HttpCalloutMock.class, mock);
+
+    	Test.startTest();
+    	String email = ProContactoService.getEmailByProcontactoId(procontactoIdVictor);
+    	Test.stopTest();
+	
+    	Assert.areEqual(procontactoEmailVictor, email);
+	}
+    
+    @IsTest
+    static void testHandleResponse_success_returnsEmail() {
+        HttpResponse res = new HttpResponse();
+        res.setStatusCode(200);
+        res.setHeader('Content-Type', 'application/json;charset=UTF-8');
+        res.setBody('{"email":"victor.olivera@procontacto.com.mx","name":"Victor"}');
+
+        String email = ProContactoService.handleResponseGetCalloutContactById(res);
+
+        Assert.areEqual(procontactoEmailVictor, email);
+    }
+
+    @IsTest
+    static void testHandleResponse_bodyNullString_returnsNull() {
+        HttpResponse res = new HttpResponse();
+        res.setStatusCode(200);
+        res.setBody('null');
+
+        String email = ProContactoService.handleResponseGetCalloutContactById(res);
+
+        Assert.areEqual(null, email);
+    }
+
+    @IsTest
+    static void testHandleResponse_blankBody_returnsNull() {
+        HttpResponse res = new HttpResponse();
+        res.setStatusCode(200);
+        res.setBody('');
+
+        String email = ProContactoService.handleResponseGetCalloutContactById(res);
+
+        Assert.areEqual(null, email);
+    }
+    
+    @IsTest
+    static void testHandleResponse_non200_returnsNull() {
+        HttpResponse res = new HttpResponse();
+        res.setStatusCode(404);
+
+        String email = ProContactoService.handleResponseGetCalloutContactById(res);
+
+        Assert.areEqual(null, email);
+    }
+}
