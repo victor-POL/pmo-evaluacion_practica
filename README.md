@@ -552,13 +552,63 @@ Un ERP (Enterprise Resource Planning) es un sistema que integra y gestiona los p
 No, ya que en un principio está enfocado a la gestión de clientes, ventas, marketing y servicio, pero, como vimos, permite una gran personalización y crear nuevas funcionalidades para diferentes casos de uso.
 
 ## Ejercicio 7
-_El codigo del ejercicio se encuentra en la carpeta `ejercicio_6`_
-Archivos:
-- ContactEmailQueueable.apxc
-- ContactTrigger
-- ProContactoCallouts
+
+### Archivos creados
+
+Los archivos del ejercicio se encuentran en la carpeta `ejercicio_7/`:
+
+#### 1. `ContactTrigger.apxt`
+Trigger principal sobre el objeto Contact que se ejecuta en los eventos `before update`, `after insert` y `after update`. Implementa la lógica para sincronizar automáticamente el campo Email del contacto con datos obtenidos desde la API de ProContacto cuando se establece o modifica el campo personalizado `idprocontacto__c`.
+
+#### 2. `ContactEmailQueueable.apxc`
+Clase Queueable que permite realizar callouts HTTP de forma asíncrona. Recibe una lista de contactos, consulta el email correspondiente desde la API de ProContacto para cada uno (usando su `idprocontacto__c`) y actualiza los registros en Salesforce con el email obtenido.
+
+#### 3. `ProContactoCallouts.apxc`
+Clase que centraliza las llamadas HTTP hacia la API de ProContacto. Contiene el método `makeGetCalloutContactById()` que construye y ejecuta una petición GET para obtener los datos de un contacto específico por su ID.
+
+#### 4. `ProContactoService.apxc`
+Clase de servicio que actúa como capa intermedia entre el trigger/queueable y los callouts. Contiene:
+- `getEmailByProcontactoId()`: método principal que coordina la obtención del email
+- `handleResponseGetCalloutContactById()`: procesa la respuesta HTTP, deserializa el JSON y extrae el campo email
+
+#### 5. `ProContactoCalloutsTest.apxc`
+Clase de pruebas unitarias con cobertura para los callouts y el servicio. Incluye tests para:
+- Verificar que el callout retorna la estructura esperada
+- Validar el procesamiento correcto de respuestas exitosas (200)
+- Probar casos edge como body vacío, "null" string, o códigos de estado diferentes a 200
+
+#### 6. `GetContactResource.txt`
+Static Resource que contiene un JSON de ejemplo utilizado en las pruebas unitarias para simular (mock) las respuestas de la API de ProContacto sin realizar callouts reales.
+
+### Funcionamiento del Trigger
+
+El `ContactTrigger` implementa la siguiente lógica según el contexto de ejecución:
+
+#### Before Update
+- **Validación de limpieza**: Si el campo `idprocontacto__c` se borra (queda en blanco), automáticamente se limpia también el campo `Email` del contacto.
+- **Propósito**: Mantener la integridad de datos evitando que quede un email sin su ID de referencia correspondiente.
+
+#### After Insert
+- **Sincronización inicial**: Cuando se crea un nuevo contacto con `idprocontacto__c` poblado, se encola un job asíncrono para obtener el email desde la API.
+- **Comportamiento**: Solo se procesa si el `idprocontacto__c` no está en blanco.
+
+#### After Update
+- **Sincronización por cambio**: Solo se dispara el proceso cuando el valor de `idprocontacto__c` cambia respecto al valor anterior.
+- **Optimización**: Evita callouts innecesarios cuando se actualizan otros campos del contacto sin modificar el ID de ProContacto.
+
+### Casos especiales manejados
+
+1. **ID no encontrado en la API**: Si el servicio de ProContacto retorna `null` o un body vacío para un ID específico, el campo Email se limpia (se establece en `null`) para reflejar que no hay información disponible.
+
+2. **Email sin cambios**: Si el email obtenido de la API es igual al que ya tiene el contacto, no se realiza ninguna actualización para evitar triggers recursivos innecesarios.
+
+3. **Respuestas HTTP no exitosas**: Cualquier código de respuesta diferente a 200 es manejado devolviendo `null`, lo que resulta en la limpieza del campo Email.
+
+4. **Procesamiento asíncrono**: El uso de Queueable permite que los callouts HTTP se ejecuten fuera del contexto sincrónico del trigger, evitando timeouts y mejorando la experiencia del usuario.
+
+5. **Validación de campos vacíos**: En todos los puntos del flujo se valida que `idprocontacto__c` no esté en blanco antes de intentar hacer callouts, evitando llamadas innecesarias a la API.
 
 > [!WARNING]
-> Se utilizo el playground `My Trailhead Playground 1`.
-> El otro playground `Data modeling - Playground` lo cree recién para el modulo de `Modelado de datos`.
+> Se utilizó el playground `My Trailhead Playground 1`.
+> El otro playground `Data modeling - Playground` lo creé recién para el módulo de `Modelado de datos`.
 
