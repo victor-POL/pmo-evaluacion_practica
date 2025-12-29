@@ -1,0 +1,38 @@
+trigger ContactTrigger on Contact (before update, after insert, after update) {
+    List<Contact> contactsToSetEmail = new List<Contact>();
+    
+   	// Para ANTES DE UN UPDATE - Si se borro el id de procontacto entonces borrar el email
+    if (Trigger.isBefore && Trigger.isUpdate) {
+        for (Contact newContact : Trigger.new) {
+            if (String.isBlank(newContact.idprocontacto__c)) {
+                newContact.Email = null;
+            }
+        }
+    }
+
+    // Para DESPUES DE UN INSERT O UPDATE - Si se seteo el id de procontacto entonces buscar el mail
+    // Puede no encontrarse, en ese caso la idea es dejar vacio el campo (en insert) o limpiarlo (en update)
+    // Si el id no cambio de todas formas busco el mail por si cambia ese dato para ese id
+    if (Trigger.isAfter) {
+        for (Contact newContact : Trigger.new) {
+            if (String.isBlank(newContact.idprocontacto__c)) continue;
+            
+            if (Trigger.isInsert) {
+                if (!String.isBlank(newContact.idprocontacto__c)) {
+                	contactsToSetEmail.add(newContact);
+            	}
+            }
+            else if (Trigger.isUpdate) {
+                Contact oldContact = Trigger.oldMap.get(newContact.Id);
+                
+                if (newContact.idprocontacto__c != oldContact.idprocontacto__c) {
+                    contactsToSetEmail.add(newContact);
+                }
+            }
+        }
+
+        if (!contactsToSetEmail.isEmpty()) {
+            System.enqueueJob(new ContactEmailQueueable(contactsToSetEmail));
+        }
+    }
+}

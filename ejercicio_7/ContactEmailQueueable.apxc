@@ -1,0 +1,31 @@
+public class ContactEmailQueueable implements Queueable, Database.AllowsCallouts {
+    private List<Contact> contacts;
+    
+    public ContactEmailQueueable(List<Contact> contactsToUpdate) {
+        contacts = contactsToUpdate;
+    }
+    
+    public void execute(QueueableContext context) {
+        if (contacts == null || contacts.size() == 0) return;
+
+        List<Contact> contactToUpdate = new List<Contact>();
+
+        for (Contact c : contacts) {
+            if (String.isBlank(c.idprocontacto__c)) continue;
+
+            String email = ProContactoCallouts.getEmailByProcontactoId(c.idprocontacto__c);
+            
+            // Si no se encontro email para el id dado limpiar el campo
+            if(String.isBlank(email)) {
+                contactToUpdate.add(new Contact(Id = c.Id, Email = null));
+            }
+            else if (!String.isBlank(email) && email != c.Email) {
+                contactToUpdate.add(new Contact(Id = c.Id, Email = email));
+            }
+        }
+
+        if (contactToUpdate.size() > 0) {
+            update contactToUpdate;
+        }
+    }
+}

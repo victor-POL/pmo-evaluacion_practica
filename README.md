@@ -62,7 +62,7 @@ En resumen, para este ejemplo la estructura sería:
 - `&` → Separador de parámetros
 - `lang=en_US` → Segundo parámetro (clave=valor)
 
-### 5. ¿Qué es el responseCode? ¿Qué significado tiene los posiblesvalores devueltos?
+### 5. ¿Qué es el responseCode? ¿Qué significado tiene los posibles valores devueltos?
 Son un campo enviado en una response HTTP cuyo valor pertenece a una lista de códigos numéricos de 3 dígitos establecidos en el estándar del protocolo HTTP para indicar el resultado de una solicitud realizada por un cliente a un servidor. De esta forma, el cliente obtiene información sobre si su solicitud fue realizada con éxito, si ocurrió un error o cualquier otra información de utilidad por si es necesario realizar alguna acción extra.
 
 El significado de los valores devueltos se agrupa en 5 grupos principales, donde luego cada código tendrá un significado en concreto:
@@ -146,3 +146,360 @@ En primer lugar, las llamadas consisten en realizar una solicitud GET al recurso
 Al realizar el `POST`, se añade al recurso un nuevo contacto con mis datos incluidos en el body. A su vez, el servidor responde con lo que parece ser un identificador para dicho contacto.
 
 La diferencia es que al realizar nuevamente la solicitud `GET` en el punto 3, el servidor devuelve el listado de contactos actualizado, incluyendo el nuevo contacto agregado por mi solicitud POST.
+
+## Ejercicio 4
+[Click para accdeder al Perfil Trailhead](https://www.salesforce.com/trailblazer/u5sz9xs3a2g7w2qjb9)
+
+## Ejercicio 5
+
+![Diagrama](https://github.com/victor-POL/pmo-evaluacion_practica/blob/main/ejercicio_5/diagrama.jpg?raw=true)
+
+1. `Lead`
+Representa un potencial cliente que aún no fue calificado. Es el primer registro que se crea cuando una persona o empresa muestra interés, pero todavía no se confirmó si existe una oportunidad real de negocio.
+    - Address
+    - Annual Revenue
+    - Campaign
+    - Clean Status
+    - Company
+    - Company D-U-N-S Number
+    - Created By
+    - Current Generator(s)
+    - D&B Company
+    - Data.com Key
+    - Description
+    - Do Not Call
+    - Email
+    - Email Opt Out
+    - Fax
+    - Fax Opt Out
+    - Gender Identity
+    - Individual
+    - Industry
+    - Last Modified By
+    - Last Transfer Date
+    - Lead Owner
+    - Lead Source
+    - Lead Status
+    - Mobile
+    - Name
+    - No. of Employees
+    - Number of Locations
+    - Phone
+    - Primary
+    - Product Interest
+    - Pronouns
+    - Rating
+    - SIC Code
+    - Title
+    - Website
+2. `Account`
+Representa una empresa, organización o cliente con el que la compañía mantiene o puede mantener una relación comercial.
+    - Account Name
+    - Account Number
+    - Account Owner
+    - Account Site
+    - Account Source
+    - Active
+    - Annual Revenue
+    - Billing Address
+    - Clean Status
+    - Created By
+    - Customer Priority
+    - D&B Company
+    - Data.com Key
+    - Description
+    - D-U-N-S Number
+    - Einstein Account Tier
+    - Employees
+    - Fax
+    - Industry
+    - Last Modified By
+    - NAICS Code
+    - NAICS Description
+    - Number of Locations
+    - Ownership
+    - Parent Account
+    - Phone
+    - Rating
+    - Shipping Address
+    - SIC Code
+    - SIC Description
+    - SLA
+    - SLA Expiration Date
+    - SLA Serial Number
+    - Ticker Symbol
+    - Tradestyle
+    - Type
+    - Upsell Opportunity
+    - Website
+    - Year Started
+3. `Contact`
+Representa una persona asociada a una Account. Puede ser un cliente, usuario final, conocido, etc.
+    - Account Name
+    - Assistant
+    - Asst. Phone
+    - Birthdate
+    - Buyer Attributes
+    - Clean Status
+    - Contact Owner
+    - Created By
+    - Creation Source
+    - Data.com Key
+    - Department
+    - Description
+    - Do Not Call
+    - Email
+    - Email Opt Out
+    - Fax
+    - Fax Opt Out
+    - Gender Identity
+    - Home Phone
+    - idprocontacto
+    - Individual
+    - Languages
+    - Last Modified By
+    - Last Stay-in-Touch Request Date
+    - Last Stay-in-Touch Save Date
+    - Lead Source
+    - Level
+    - Loan Amount
+    - Mailing Address
+    - Mobile
+    - Name
+    - Other Address
+    - Other Phone
+    - Phone
+    - Prequalified?
+    - Pronouns
+    - Reports To
+    - Title
+4. `Opportunity`
+Representa una posible venta en curso. Permite hacer seguimiento del proceso comercial desde la identificación hasta el cierre, incluyendo monto y probabilidad.
+    - Account Name
+    - Amount
+    - Close Date
+    - Contract
+    - Created By
+    - Current Generator(s)
+    - Delivery/Installation Status
+    - Description
+    - Expected Revenue
+    - Forecast Category
+    - Last Modified By
+    - Lead Source
+    - Main Competitor(s)
+    - Next Step
+    - Opportunity Name
+    - Opportunity Owner
+    - Opportunity Score
+    - Order Number
+    - Price Book
+    - Primary Campaign Source
+    - Private
+    - Probability (%)
+    - Quantity
+    - Stage
+    - Tracking Number
+    - Type
+5. `Product`
+Representa un articulo que la empresa ofrece a sus clientes.
+    - Active
+    - Created By
+    - Display URL
+    - External Data Source
+    - External ID
+    - Last Modified By
+    - Product Code
+    - Product Description
+    - Product Family
+    - Product Name
+    - Product SKU
+    - Quantity Unit of Measure
+    - Seller
+    - Source Product
+6. `PriceBook`
+Representa una lista de precios que define el valor de los productos.
+    - Active
+    - Created By
+    - Description
+    - Is Standard Price Book
+    - Last Modified By
+    - Price Book Name
+7. `Quote`
+8. `Asset`
+Representa un roducto que ya fue vendido y que pertenece a un cliente.
+    - Account
+    - Address
+    - Asset Level
+    - Asset Name
+    - Asset Owner
+    - Asset Provided By
+    - Asset Serviced By
+    - Competitor Asset
+    - Consequence Of Failure
+    - Contact
+    - Created By
+    - Current Amount
+    - Current Lifecycle End Date
+    - Current Monthly Recurring Revenue
+    - Current Quantity
+    - Description
+    - Digital Asset Status
+    - External Id
+    - Install Date
+    - Internal Asset
+    - Last Modified By
+    - Lifecycle End Date
+    - Lifecycle-managed asset
+    - Lifecycle Start Date
+    - Location
+    - Manufacture Date
+    - Parent Asset
+    - Price
+    - Product
+    - Product Code
+    - Product Description
+    - Product Family
+    - Product SKU
+    - Purchase Date
+    - Quantity
+    - Root Asset
+    - Serial Number
+    - Status
+    - Status Reason
+    - Total Lifecycle Amount
+    - Unique Identifier
+    - Usage End Date
+9. `Case`
+Representa una solicitud de soporte, reclamo o incidente reportado por un cliente.
+    - Account Name
+    - Asset
+    - Business Hours
+    - Case Number
+    - Case Origin
+    - Case Owner
+    - Case Reason
+    - Closed When Created
+    - Contact Email
+    - Contact Fax
+    - Contact Mobile
+    - Contact Name
+    - Contact Phone
+    - Created By
+    - Date/Time Closed
+    - Date/Time Opened
+    - Description
+    - Engineering Req Number
+    - Entitlement Name
+    - Escalated
+    - Internal Comments
+    - Last Modified By
+    - Milestone Status
+    - Milestone Status Icon
+    - Parent Case
+    - Potential Liability
+    - Priority
+    - Product
+    - Product
+    - Service Contract
+    - SLA Policy End Time
+    - SLA Policy Start Time
+    - SLA Violation
+    - Status
+    - Stopped
+    - Stopped Since
+    - Subject
+    - Type
+    - Web Company
+    - Web Email
+    - Web Name
+    - Web Phone
+10. `Article`
+
+
+## Ejercicio 6
+
+### Soluciones de Salesforce
+
+#### A. ¿Qué es Salesforce?
+En un principio, se podría decir que es un CRM en la nube que permite gestionar relaciones con clientes, ventas, atención al cliente, marketing y cualquier otro proceso de negocio en un solo lugar, pero lo visto en el Trailhead demuestra que permite un alto nivel de personalización y crear lo que sea necesario según diferentes casos de uso.
+#### B. ¿Qué es Sales Cloud?
+Es una app de Salesforce Platform que está orientada a la parte de gestión de ventas de una empresa/negocio, incluyendo lo que respecta a administrar leads, oportunidades, cuentas, contactos, etc.
+#### C. ¿Qué es Service Cloud?
+Es otra app de Salesforce Platform enfocada a la atención al cliente, permitiendo gestionar casos de soporte, reportes, contactos, cuentas, etc. Su objetivo es que todos los puntos de contacto con los clientes estén en una plataforma unificada.
+#### D. ¿Qué es Health Cloud?
+Es otra app que ofrece una plataforma para la atención de la salud, lo cual lo logra reuniendo datos clínicos y no clínicos en un solo lugar. 
+#### E. ¿Qué es Marketing Cloud?
+Por último, también es una app que se centra en el marketing digital para ayudar en toda la interacción con el cliente a lo largo de toda su relación con el mismo. Permite gestionar campañas, automatizaciones, emails y realizar comunicaciones personalizadas, entre otras funcionalidades.
+
+
+### Funcionalidades de Salesforce
+
+#### A. ¿Qué es un RecordType?
+Un Record Type permite definir diferentes tipos de registros dentro de un mismo objeto, adaptando el sistema a distintos procesos de negocio. Cada Record Type puede tener asociados distintos Page Layouts, valores de picklists y procesos.
+#### B. ¿Qué es un ReportType?
+Un Report Type define qué datos pueden analizarse en un reporte y cómo se relacionan los objetos involucrados. Determina qué objetos están disponibles, si los registros relacionados son obligatorios u opcionales, y qué campos se pueden utilizar.
+#### C. ¿Qué es un Page Layout?
+Controla la información de un objeto que se muestra al usuario, especificando qué campos se muestran, su orden, botones, listas relacionadas, etc. Además, permite establecer los campos que son visibles, de solo lectura y obligatorios.
+#### D. ¿Qué es un Compact Layout?
+Sería una versión del Page Layout orientada a mostrar los campos más importantes de un objeto y poder visualizarlos de forma más rápida y fácil, ya sea en la aplicación móvil de Salesforce, Lightning Experience y en las integraciones de Outlook y Gmail.
+#### E. ¿Qué es un Perfil?
+Al crear usuarios, se les asigna un perfil, el cual puede ser editado para modificar los permisos y configuraciones del mismo. La idea es controlar a qué objetos pueden acceder (read, create, edit, delete), configurar el tiempo de inactividad para cerrar su sesión, políticas sobre la contraseña, etc.
+#### F. ¿Qué es un Rol?
+Define la jerarquía organizacional dentro de Salesforce y controla la visibilidad de los registros entre usuarios, es decir, determinar si los usuarios tienen acceso a registros que no les pertenecen. La idea es que los usuarios asignados a roles superiores tengan acceso a los registros que pertenecen a sus subordinados o que comparten con ellos.
+#### G. ¿Qué es un Validation Rule?
+Es una regla que mejora la calidad de los datos a través de la verificación de los mismos al momento de que un usuario inserta un registro. Puede ser una fórmula o expresión que va a evaluar los datos del registro y retornar verdadero o falso.
+#### H. ¿Qué diferencia hay entre una relación Master Detail y Lookup?
+En una relación Lookup, los objetos funcionan de forma independiente, lo cual permite que se pueda eliminar uno de los objetos y el otro siga existiendo. Se puede ver como una relación débil.
+
+En el caso de Master Detail no es así, ya que tener un objeto sin el otro "no tiene sentido", como una relación fuerte. Por lo tanto, al eliminar, si elimino el objeto principal, también se eliminará el objeto relacionado.
+#### I. ¿Qué es un Sandbox?
+Es un entorno que replica el entorno productivo para poder desarrollar, probar o cualquier otra acción o propósito sin afectar datos reales o un entorno que no queremos afectar involuntariamente con cambios no deseados.
+#### J. ¿Qué es un ChangeSet?
+Es una herramienta que permite migrar las personalizaciones realizadas en una organización Salesforce a otra. Por ejemplo, al crear un objeto en un sandbox de prueba, este luego puede ser enviado a la organización de producción.
+#### K. ¿Para qué sirve el import Wizard de Salesforce?
+Sirve para importar cuentas, contactos, clientes potenciales, soluciones, objetos personalizados, cuentas personales, etc. Este asistente solo va a permitir la importación si el archivo viene en formato CSV.
+#### L. ¿Para qué sirve la funcionalidad Web to Lead?
+Web to Lead permite capturar información de potenciales clientes desde los visitantes del sitio web de una empresa cuando proporcionan información de contacto y así crear automáticamente registros de tipo Lead, e incluso redirigirlos a otra página web para alguna campaña.
+#### M. ¿Para qué sirve la funcionalidad Web to Case?
+Web to Case permite crear casos de soporte automáticamente desde el sitio web de una empresa. Cada solicitud enviada genera un registro de caso en Salesforce para su seguimiento.
+#### N. ¿Para qué sirve la funcionalidad Omnichannel?
+Omnichannel permite distribuir automáticamente el trabajo (casos, chats, tareas) entre las diferentes representantes de asistencias según reglas, prioridades y disponibilidad en el centro de llamadas.
+#### O. ¿Para qué sirve la funcionalidad Chatter?
+Chatter es una herramienta de colaboración entre usuarios en oportunidades de ventas, casos de servicios, campañas, etc. Permite comunicarse, compartir información y trabajar de forma colaborativa.
+
+### Conceptos generales
+
+#### A. ¿Qué significa SaaS?
+SaaS (Software as a Service) se refiere a un modelo donde el software es distribuido a los clientes a través de internet, los cuales generalmente pagan por su uso y no se requiere de una instalación local del software, sino que se utiliza, por ejemplo, mediante un navegador web.
+#### B. ¿Salesforce es Saas?
+Sí, ya que se accede y utiliza a través de la nube sin necesidad de descargar o instalar un programa adicional; simplemente desde un navegador se puede comenzar a utilizar.
+#### C. ¿Qué significa que una solución sea Cloud?
+Significa que la misma se encuentra en una infraestructura remota, es decir, el sistema no se encuentra instalado localmente, sino que para hacer uso de la misma y de su procesamiento o servicios que ofrece, uno debe acceder a la misma mediante internet y no va a requerir que la empresa que la use necesite un hardware en específico o que instale otro software que use dicho hardware. Además, esa solución es gestionada por proveedores externos a la empresa.
+#### D. ¿Qué significa que una solución sea On-Premise?
+En este caso, la solución se encuentra instalada en una infraestructura propia de la empresa y además es gestionada por la misma. Entonces la empresa debe encargarse de tener el hardware y software necesario para poder instalar y utilizar la solución desarrollada, darle el mantenimiento correspondiente, etc.
+#### E. ¿Qué es un pipeline de ventas?
+Es una herramienta que va a definir las oportunidades de venta que se le van a ir presentando desde el primer contacto hasta el cierre, permitiendo visualizar más fácilmente en qué punto se encuentra cada potencial cliente.
+#### F. ¿Qué es un funnel de ventas?
+Es un sistema que analiza el camino que recorren los potenciales clientes hasta convertirse en clientes, es decir, un proceso en el cual las primeras etapas consisten en generar algún atractivo para los futuros clientes y que logren conocernos, para luego poder arrancar una relación y finalmente otorgarle una oferta de valor al mismo. Entonces, al ir avanzando, se va reduciendo el número de potenciales clientes que llegan cada vez más filtrados e informados a nuestra oferta final. Se va a centrar más en la cantidad o volumen de personas que llegan al final y mejorar cada una de las etapas.
+#### G. ¿Qué significa Customer Experience?
+Es toda la experiencia general del cliente en todos los puntos de interacción que tiene con nuestra marca, abarcando toda la experiencia completa desde que nos conoce hasta la posventa. Principalmente, se basa en el uso de conocimientos de marketing para poder aumentar los ingresos a través de la publicidad, mejorar el servicio al cliente y crear una marca que se centra en cómo esos clientes perciben a nuestra empresa y qué imagen tienen de nosotros.
+#### H. ¿Qué significa omnicanalidad?
+Significa que una empresa ofrece una experiencia integrada y consistente a través de los diferentes canales de contacto que los clientes tienen con la misma, por ejemplo, a través de una página web, teléfono, email, redes sociales, atención presencial, etc.
+#### I. ¿Qué significa que un negocio sea B2B?¿Qué significa que un negocio sea B2C?¿Qué es un KPI?
+- `B2B`: una empresa ofrece productos o servicios a otras empresas. EJ: fabrica de maquinas de coser le vende a fabricantes de ropa
+- `B2C`: una empresa vende productos o servicios directamente al consumidor final. EJ: tienda online de productos electronicos los vende a usuarios finales
+- `KPI`: es un indicador clave de desempeño que se utiliza para medir el nivel de cuplimiento de objetivos de un proceso, área o negocio. En base a eso se pueden identificar desvíos, evaluar resultados y tomar decisiones basadas en datos.
+
+#### J. ¿Qué es una API y en qué se diferencia de una Rest API?
+`API` (Application Programming Interface) hace referencia al conjunto de reglas establecidas para permitir que diferentes sistemas se puedan comunicar entre sí y hacer uso de funcionalidades de la misma de una forma estructurada y controlada.
+
+`REST API` es un tipo específico de API que hace uso del protocolo HTTP y principios REST, que anteriormente se describieron, como los verbos HTTP, que la comunicación sea stateless, código de estado, etc.
+#### K. ¿Qué es un Proceso Batch?
+Es un proceso que se ejecuta en horarios programados, en segundo plano y generalmente con volúmenes de datos recopilados hasta ese momento. Por ejemplo, todas las transferencias realizadas en un banco se podrían procesar al mismo tiempo al finalizar el día para evitar que las mismas se realicen en tiempo real.
+#### L. ¿Qué es Kanban?
+Es una metodología ágil de trabajo que se destaca por el uso de tableros visuales para representar tareas y su estado. La idea es que todo el equipo pueda visualizar fácilmente el trabajo a realizar y el punto en el que se encuentra el proyecto para así poder tomar mejores decisiones.
+#### M. ¿Qué es un ERP?
+Un ERP (Enterprise Resource Planning) es un sistema que integra y gestiona los procesos internos de una organización, generalmente los más conocidos como finanzas, compras, inventario, logística, RRHH, etc. Su objetivo sería centralizar toda esa información en un único sitio.
+#### N. ¿Salesforce es un ERP?
+No, ya que en un principio está enfocado a la gestión de clientes, ventas, marketing y servicio, pero, como vimos, permite una gran personalización y crear nuevas funcionalidades para diferentes casos de uso.
